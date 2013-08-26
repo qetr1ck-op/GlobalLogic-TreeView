@@ -1,0 +1,137 @@
+body {
+	margin: 0;
+	padding: 0
+}
+/* Container just includes nodes */
+.Container {
+	padding: 0;
+	margin: 0 0 0 5px;	
+}
+.treeViewer {
+	width: 330px;
+	margin: 50px 0 0 10px;
+	float: left;
+}
+/* hide default style in list */
+.Container li {
+	list-style: none;
+	cursor: pointer;
+}
+/* thanks to these indents nodes and sub-nodes
+are forming tree hierarchy */
+.Node {
+	margin-left: 18px;
+	zoom: 1;
+/* left line generateing by repeating background image*/
+	background-image: url(../img/i.gif);
+	background-position: top left;
+	background-repeat: repeat-y;
+	color: black;
+	text-shadow: none;
+}
+.IsLast {
+	background-image: url(../img/i_half.gif);
+    background-repeat : no-repeat;
+    		
+}
+/* the root node don't need margin, because he is not child of any node
+this rule comes after .Node, so has a higher priority
+*/
+.IsRoot {
+	margin-left: 0;
+}
+
+/* STYLE FOR NODE COMPONENTS */
+
+/* I use the principle of two-columm layout
+it is mean float:left adn width of element + margin-left div Content
+*/
+.Expand {
+	width: 18px;
+	height: 18px;
+	float: left;
+}
+/* I need min-height, because height of title
+will be at least equal to Expand */
+.Content {
+	margin-left: 18px;
+	min-height: 18px;
+}
+		
+/* STYLE FOR ICONS NODE STATUS */
+
+/* open sub-tree */
+.ExpandOpen .Expand {
+	/*background-image: url(../img/expand_minus.gif);*/
+	background-image: url(../img/open.gif);
+}
+/* close sub-tree */
+.ExpandClosed .Expand {
+	/*background-image: url(../img/expand_plus.gif);*/
+	background-image: url(../img/closed.gif);
+}
+/* leaf of tree */
+.ExpandLeaf .Expand {
+	/*background-image: url(../img/expand_leaf.gif);*/
+	background-image: url(../img/file.png);
+}
+
+/* SHOW/HIDE */
+
+.ExpandOpen .Container {
+	display: block;
+}
+.ExpandClosed .Container {
+	display: none;
+}
+/* icons show/hide */
+.ExpandOpen .Expand, .ExpandClosed .Expand {
+	cursor: pointer; 
+}
+/* leaf node */
+.ExpandLeaf .Expand {
+	cursor: auto; 
+}
+/* input for dblClick */
+.Highlight {
+	text-shadow: 0px 3px 14px rgba(59, 150, 150, 1);
+	color: red
+}
+/* for context menu */
+.hasmenu, .hasmenu2 {
+    border: 1px solid #008;
+    margin: 3px;
+    padding: 5px;
+    width: 30px;
+}
+.ui-widget{
+	font-size: .8em;
+}
+.ui-menu {
+	width: 150px;
+}
+
+/* DESCRIPTION AND SHOW SECTION */
+.main {
+	margin: 0 auto;
+	width: 1250px
+}
+.description {
+	margin-left: 10px;
+	width: 550px;
+	font-size: 0.8em;
+	float: left;
+}
+.show {
+	float: left;
+	width: 330px;
+	margin-left: 20px;
+	font-size: 0.8em;
+}
+.description img {
+	margin: 0 0 0 165px;
+}
+		
+.description h1 {
+	margin-left: 100px
+}
