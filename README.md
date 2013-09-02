@@ -1,4 +1,4 @@
-JavaSCript Tree Viwer Version 1.1
+JavaScript Tree Viwer Version 1.1
 ==============
 
 New in Version 1.1 :
