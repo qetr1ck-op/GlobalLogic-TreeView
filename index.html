@@ -4,12 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Tree View</title>
 
-	<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/start/jquery-ui.css" />
+	
 	<link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js" type="text/javascript"></script>
+    <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.js" type="text/javascript"></script>
-
-    <script src="js/jquery.ui-contextmenu.js" type="text/javascript"></script>
+   
+    <script src="js/jquery.ui-contextmenu.js" type="text/javascript"></script> -->
 
 	<style>
 		
@@ -29,7 +29,10 @@
 	we just need to refer to the Container 
 	"ExpandLeaf" mean that node is leaf of tree
 	-->
+	
 	<div class="main">
+	<div><a id="contextEnable" style="display:none" href="#">Enable context menus</a></div>
+
 	<div class="treeViewer" onclick="tree_toggle(arguments[0]);">
 		<div>Root</div>
 		<ul class="Container Main">
@@ -90,15 +93,40 @@
 			<div class="Content">Item 4</div>
 		  </li>
 		</ul>
-	<input type="textbox" class="inputForNode" id="inputForNode" value="add new node">
-	<button class="addNode" id="addNode">Add node</button>
-	<button class="addLeaf" id="addLeaf">Add leaf</button>
+		<input type="textbox" class="inputForNode" id="inputForNode" value="new item">
+		<button class="addNode" id="addNode">Add Folder</button>
+		<button class="addLeaf" id="addLeaf">Add File</button>
 	</div>
+
+	<div id="divContext" style="border: 1px solid blue; display: none; position: absolute">
+		<ul class="cmenu">
+			<li><a id="contextAddLeaf" href="#">Add File</a></li>
+			<li><a id="contextAddNode" href="#">Add Folder</a></li>
+			<li><a id="contextAddRootNode" href="#">Add Root Folder</a></li>
+			<li><a id="contextRename" href="#">Rename</a></li>
+			<li><a id="contextRenameNew" href="#">Rename New</a></li>
+			<li><a id="contextDelete" href="#">Delete</a></li>
+			<li class="topSep">
+				<a id="contextDisable" href="#">disable this menu</a>
+			</li>
+		</ul>
+	</div>
+
 	
 	<div class="description">
 		<h1>Tree View: how it works</h1>
+		<h4>Version 1.1</h4>
+		<ul>
+			<li>Only pure JavaScript, any plugin, any libraries.</li>
+			<li>Changed context menu</li>
+			<li>Added new Rename method</li>
+			<li>Added Disable option of context menu</li>
+			<li>Compatibility with IE</li>
+		</ul>
 		<p>Briefly instruction, how I implemented my JavaScript tree, what it includes and how it works at all.</br>
+		I also created repository on Git - https://github.com/qetr1ck-op/GlobalLogic-TreeView</br>
 		Please note - all the markup is used exclusively semantic. You may see this on image below.
+
 		</p>
 		<img src="img/node.png" width="200">
 		<ul class='descrUl'>
@@ -113,27 +141,27 @@
 			<li>Structural lines of the tree, making a clearer hierarchy, without used extra tags</li>
 			<li>I use the principle of two-columm layout it's mean float:left and width of element + margin-left div Content</li>
 		</ul>
-		<p>Next are handler of click on tree. What in totaly I did :</p>
+		<p>Next are handler of click on tree. What in total I did :</p>
 		<ol>
 			<li>To determine whether there was a click on the icon Expand, using event.target</li>
 			<li>Get a Node for the properly icon</li>
 			<li>If node - are not a leaf, then change the class ExpandOpen - ExpandClosed</li>
 		</ol>
 		<p>Next I worked for add nodes and control features. I tried to do all handlers and methods in object literal.</br>
-		I never used to factory pattern in my life, but think it was a good practice for me :)  </p>
+		I never used to factory pattern in my life, but think it was a good practice for me</p>
 		<ul>
 			<li>Create input field for name of futures node, add buttons to add node or leaf</li>
 			<li>Handlers for creating new node</li>
 			<li>Method to get input vulue</li>
 			<li>Handler for to check/uncheck node. If node check, to this node add 'Highlight' class. After that we can dynamicaly add new nodes, else bottons will add Root nodes. Also we can check a few nodes and more than one nodes</li>
 		</ul>
-		<p>And finaly stem was context munu on dbl click on properly nodes. I think to write own plugin for this task. It's not so hard, but it would took me a long time. I couldn't affort this, that is why I choose jQuery plugin. If it's wrong way, sorry about this.</br>
+		<p>And finaly step was context munu on dbl click on properly nodes. I wrote own plagin for this issue.
+		</br>
 		Finaly what I did to achive this :
 		<ul>
-			<li>I used plugin, that cross-browser compatible rewrited .addEventListener or .attachEvent in my tree viewer.</li>
+			<li>I used my own plugin, that cross-browser compatible rewrited .addEventListener or .attachEvent in my tree viewer.</li>
 			<li>Create handler that add class for click/unclick node</li>
 			<li>Implement menu within create new root node, node and leaf. Also user have ability to delete or rename properly node</li>
-			<li>Sorry, but I used jQuery selector. I want to be honest with you. Maybe it's wrong because task based to not use any framework. I just want to did this task as fast as I can</li>
 		</ul>
 		<p>At the end I want to say few words generaly about this task</p>
 		<ul>
@@ -146,6 +174,7 @@
 	</div>
 	<div class="show">
 		<h1>Features and examples</h1>
+		<div class="show1New"><img src="img/show1New.png" alt="show1" width="300"></div>
 		<div class="show1"><img src="img/show1.png" alt="show1" width="300"></div>
 		<div class="show22"><img src="img/show22.png" alt="show22" width="300"></div>
 		<div class="show2"><img src="img/show2.png" alt="show2" width="300"></div>
